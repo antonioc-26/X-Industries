@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Place Your Order - Amazone 2.0</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/aa8c13a461.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header class="website-header">
+      <div class="header-top">
+        <h1>X-Industries</h1>
+      </div>
+      <div class="header-middle">
+        <div class="nav">
+          <nav>
+            <a href="index.html"><button id="homeButton">Home</button></a>
+            <a href="books.html"><button id="booksButton">Books</button></a>
+            <a href="movies.html"><button id="moviesButton">Movies</button></a>
+            <a href="electronics.html"
+              ><button id="electronicsButton">Electronics</button></a
+            >
+            <a href="video-games.html"
+              ><button id="video-gamesButton">Video Games</button></a
+            >
+            <a href="toys.html"><button id="toysButton">Toys</button></a>
+            <a href="misc.html"><button id="miscButton">Misc</button></a>
+          </nav>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <a href="login.html"><button id="accountButton">Login</button></a>
+        <div id="searchWrapper">
+          <input
+            type="text"
+            name="searchBar"
+            id="searchBar"
+            placeholder="Search X-Industries"
+          />
+          <button class="search-icon-btn" id="searchbutton" type="button">
+            <i class="fa-solid fa-magnifying-glass-dollar"></i>
+          </button>
+        </div>
+        <a href="orders.html"><button id="ordersButton">Orders</button></a>
+        <a href="cart.html" class="cart-link">
+          <div class="cart-container">
+            <div class="cart-icon2">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+            <span id="cart-count">0</span>
+            <div id="cart-total">$0.00</div>
+          </div>
+        </a>
+      </div>
+    </header>
+    <main>
+      <div class="page-title">
+        <h2>Place Your Order</h2>
+      </div>
+      <div class="buynow-container">
+        <!-- LEFT SIDE: FORM -->
+        <div class="buynow-form-section">
+          <h3>Payment Information</h3>
+          <form
+            method="post"
+            action="order-confirmation.html"
+            id="checkout-form"
+          >
+            <label for="myName">* Name: </label>
+            <input type="text" id="myName" name="myName" required="required" />
+            <br />
+            <label for="myCC">* CC#: </label>
+            <input type="tel" id="myCC" name="myCC" required="required" />
+            <br />
+            <label for="myCVV">* CVV: </label>
+            <input type="tel" id="myCVV" name="myCVV" required="required" />
+            <br />
+            <label for="myExp">* Expiration Date: </label>
+            <input type="tel" id="myExp" name="myExp" required="required" />
+            <br />
+            <label for="myZip">*ZIP Code: </label>
+            <input type="tel" id="myZip" name="myZip" required="required" />
+            <br />
+            <br />
+            <h3>Shipping</h3>
+            <label for="myName">* Name: </label>
+            <input type="text" id="myName" name="myName" required="required" />
+            <br />
+            <label for="myAddress">* Address: </label>
+            <input
+              type="text"
+              id="myAddress"
+              name="myAddress"
+              required="required"
+            />
+            <br />
+            <label for="myCity">* City: </label>
+            <input type="text" id="myCity" name="myCity" required="required" />
+            <br />
+            <label for="myState">* State: </label>
+            <input
+              type="text"
+              id="myState"
+              name="myState"
+              required="required"
+            />
+            <br />
+            <label for="myZip">* ZIP Code:</label>
+            <input type="tel" id="myZip" name="myZip" required="required" />
+            <input type="submit" value="Complete Order" />
+          </form>
+        </div>
+
+        <!-- RIGHT SIDE: ORDER SUMMARY -->
+        <div class="buynow-summary-section">
+          <h3>Order Summary</h3>
+          <div id="shadow-cart-items"></div>
+          <div class="order-total">
+            <p>
+              Subtotal (<span id="shadow-cart-count">0</span> items):
+              <strong id="shadow-subtotal">$0.00</strong>
+            </p>
+            <p class="total-line">
+              Total: <strong id="shadow-total">$0.00</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div class="footer">
+      <footer>
+        <i>
+          <small>
+            Copyright &copy; X-Industries LLC Amazone 2.0 Corp.
+            <a href="mailto:X-Industries@amazone2.0.com"
+              >X-Industries@amazone2.0.com</a
+            >
+          </small>
+        </i>
+      </footer>
+    </div>
+    <script src="search.js"></script>
+    <script src="cart.js"></script>
+    <script src="buynow.js"></script>
+    <script src="auth.js"></script>
+  </body>
+</html>

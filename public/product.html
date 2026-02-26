@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details - Amazone 2.0</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <script
+      src="https://kit.fontawesome.com/aa8c13a461.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <header class="website-header">
+      <div class="header-top">
+        <h1>X-Industries</h1>
+      </div>
+
+      <div class="header-middle">
+        <div class="nav">
+          <nav>
+            <a href="index.html"><button id="homeButton">Home</button></a>
+            <a href="books.html"><button id="booksButton">Books</button></a>
+            <a href="movies.html"><button id="moviesButton">Movies</button></a>
+            <a href="electronics.html"
+              ><button id="electronicsButton">Electronics</button></a
+            >
+            <a href="video-games.html"
+              ><button id="video-gamesButton">Video Games</button></a
+            >
+            <a href="toys.html"><button id="toysButton">Toys</button></a>
+            <a href="misc.html"><button id="miscButton">Misc</button></a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="header-bottom">
+        <a href="login.html"><button id="accountButton">Login</button></a>
+
+        <div id="searchWrapper">
+          <input
+            type="text"
+            name="searchBar"
+            id="searchBar"
+            placeholder="Search X-Industries"
+          />
+          <button class="search-icon-btn" id="searchbutton" type="button">
+            <i class="fa-solid fa-magnifying-glass-dollar"></i>
+          </button>
+        </div>
+        <a href="orders.html"><button id="ordersButton">Orders</button></a>
+
+        <a href="cart.html" class="cart-link">
+          <div class="cart-container">
+            <div class="cart-icon2">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+            <span id="cart-count">0</span>
+            <div id="cart-total">$0.00</div>
+          </div>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <div class="product-container" id="product-container">
+        <p>Loading product...</p>
+      </div>
+
+      <script src="product.js"></script>
+    </main>
+
+    <div class="footer">
+      <footer>
+        <i>
+          <small>
+            Copyright &copy; X-Industries LLC Amazone 2.0 Corp.
+            <a href="mailto:X-Industries@amazone2.0.com"
+              >X-Industries@amazone2.0.com</a
+            >
+          </small>
+        </i>
+      </footer>
+    </div>
+
+    <script src="search.js"></script>
+    <script src="cart.js"></script>
+    <script src="auth.js"></script>
+  </body>
+</html>
