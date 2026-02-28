@@ -1,63 +1,60 @@
+// Author: Antonio Corona
+// Data Import Script for X-Industries
+// Imports product data from JSON file into MongoDB "inventory" collection
+
+require("dotenv").config();
 const mongoose = require("mongoose");
 const fs = require("fs");
-require("dotenv").config();
+const path = require("path");
 
-const MONGODB_URI =
-  process.env.MONGODB_URI ||
-  "mongodb+srv://bhstouff:1234@cluster0.msbys1f.mongodb.net/0?appName=Cluster0";
+// --- Mongo Connection ---
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log("MongoDB Connected"))
+  .catch(err => {
+    console.error("MongoDB connection error:", err);
+    process.exit(1);
+  });
 
-const productSchema = new mongoose.Schema(
-  {
-    sys: {
-      id: { type: String, required: true, unique: true },
-    },
-    fields: {
-      title: { type: String, required: true },
-      price: { type: Number, required: true },
-      image: {
-        fields: {
-          file: {
-            url: { type: String, required: true },
-          },
-        },
-      },
-      description: { type: String },
-      category: { type: String, required: true },
-      stock: { type: Number, required: true, default: 0 },
-      rating: { type: Number },
-      brand: { type: String },
-      details: { type: mongoose.Schema.Types.Mixed },
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
+// --- Product Schema (must match server.js schema) ---
+const productSchema = new mongoose.Schema({
+  title: String,
+  category: String,
+  price: Number,
+  image: String,
+  description: String,
+  rating: Number,
+  countInStock: Number
+});
 
+// Explicitly bind to "inventory" collection
 const Product = mongoose.model("Product", productSchema, "inventory");
 
-async function importData() {
+// --- Load JSON file from public/data ---
+const dataPath = path.join(
+  __dirname,
+  "..",
+  "..",
+  "public",
+  "data",
+  "product_real_titles.json"
+);
+
+const importData = async () => {
   try {
-    await mongoose.connect(MONGODB_URI);
-    console.log("Connected to MongoDB");
+    const rawData = fs.readFileSync(dataPath, "utf-8");
+    const products = JSON.parse(rawData);
 
-    const data = JSON.parse(
-      fs.readFileSync("products_real_titles.json", "utf-8")
-    );
+    // Optional: clear existing products before import
+    await Product.deleteMany();
 
-    // Clear the collection
-    await Product.deleteMany({});
-    console.log("Cleared existing data");
+    await Product.insertMany(products);
 
-    // Insert each product as a separate document
-    await Product.insertMany(data.items);
-    console.log(`Imported ${data.items.length} products successfully!`);
-
-    process.exit(0);
+    console.log("Data Imported Successfully");
+    process.exit();
   } catch (error) {
-    console.error("Error importing data:", error);
+    console.error("Import Error:", error);
     process.exit(1);
   }
-}
+};
 
 importData();
