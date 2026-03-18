@@ -1,9 +1,12 @@
 /*
+Author: Antonio Corona
+Last Updated: 2026-03-18
+
 auth.js - Frontend authentication utilities
 Handles token management, login state, and authentication checks
 */
 
-const API_URL = "https://c2s73c-3010.csb.app/api";
+import { API_URL } from "./config.js";
 
 const Auth = {
   // Get token from localStorage
@@ -61,7 +64,7 @@ const Auth = {
     sessionStorage.setItem("loginMessage", message);
     sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
     window.location.href = "login.html";
-    Console.log("DEBUG - requireLogin called");
+    console.log("DEBUG - requireLogin called");
   },
 
   // Check if order placement should be blocked
@@ -222,6 +225,7 @@ function updateAuthUI() {
     }
   }
   if (isLoggedIn && user) {
+    const USER_WELCOME_MESSAGE = document.getElementById("userWelcomeMessage");
     if (USER_WELCOME_MESSAGE) {
       USER_WELCOME_MESSAGE.textContent = `Welcome ${user.username}!`;
     }
