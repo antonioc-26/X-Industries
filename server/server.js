@@ -12,7 +12,7 @@ This server connects to MongoDB and provides API endpoints for:
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
@@ -27,9 +27,11 @@ app.use(express.json());
 const path = require("path");
 app.use(express.static(path.join(__dirname, "..", "public")));
 
-const MONGODB_URI =
-  process.env.MONGODB_URI ||
-  "mongodb+srv://bhstouff:1234@cluster0.msbys1f.mongodb.net/0?appName=Cluster0";
+const MONGODB_URI = process.env.MONGODB_URI;
+
+if (!MONGODB_URI) {
+  throw new Error("MONGODB_URI missing in .env");
+}
 
 mongoose
   .connect(MONGODB_URI, {})
