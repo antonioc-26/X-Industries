@@ -225,7 +225,7 @@ function updateAuthUI() {
     }
   }
   if (isLoggedIn && user) {
-    const USER_WELCOME_MESSAGE = document.getElementById("userWelcomeMessage");
+    const USER_WELCOME_MESSAGE = document.getElementById("USER_WELCOME_MESSAGE");
     if (USER_WELCOME_MESSAGE) {
       USER_WELCOME_MESSAGE.textContent = `Welcome ${user.username}!`;
     }
