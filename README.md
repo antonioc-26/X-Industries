@@ -14,16 +14,17 @@ Users can browse products, search by category, manage a shopping cart, create ac
 
 ## 📸 Screenshots
 
-*(Add these later for maximum impact)*
-
 ### Home Page
-![Home](screenshots/home.png)
+![Home](screenshots/home.jpg)
 
 ### Product Page
-![Product](screenshots/product.png)
+![Product](screenshots/product.jpg)
 
 ### Orders Page
-![Orders](screenshots/orders.png)
+![Orders](screenshots/orders.jpg)
+
+### Dashboard Page
+![Dashboard](screenshots/dashboard.jpg)
 
 ---
 
