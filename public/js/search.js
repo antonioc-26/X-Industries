@@ -1,3 +1,12 @@
+/*
+Author: Antonio Corona
+Last Updated: 2026-03-18
+
+search.js 
+*/ 
+
+import { API_ENDPOINTS } from "./config.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const searchBar = document.getElementById("searchBar");
   const searchButton = document.getElementById("searchbutton");
@@ -12,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Fetch products and filter
-    fetch("/api/products")
+    fetch(API_ENDPOINTS.products)
       .then((res) => res.json())
       .then((data) => {
         const results = data.items.filter((item) => {

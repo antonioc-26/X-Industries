@@ -1,8 +1,13 @@
 /*
+Author: Antonio Corona
+Last Updated: 2026-03-18
+
 product.js is used for individual products.
 corresponds to (product.html)
 */
-//****************************************************************************************** */
+
+import { API_ENDPOINTS, PAGE_ROUTES } from "./config.js";
+
 // Allows for the html to fully load before the java script runs
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("product-container"); // Basic container for the product details
@@ -15,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
   // Obtains the data from the JSON file and get the specific product's info
-  fetch("/api/products")
+  fetch(API_ENDPOINTS.products)
     .then((response) => response.json())
     .then((data) => {
       const product = data.items.find((item) => item.sys.id === productId);
@@ -182,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
         sessionStorage.setItem("shadowCart", JSON.stringify(shadowCart));
         sessionStorage.setItem("buyNowMode", "true");
         // Redirect to buynow.html
-        window.location.href = "buynow.html";
+        window.location.href = PAGE_ROUTES.buyNow;
       });
 
       buttonContainer.appendChild(buyNowBtn);

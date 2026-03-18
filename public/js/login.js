@@ -5,7 +5,7 @@ Last Updated: 2026-03-18
 login.js - Handles login form submission
 */
 
-import { API_URL } from "./config.js";
+import { API_ENDPOINTS, PAGE_ROUTES } from "./config.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("login-form");
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const username = document.getElementById("myUsername").value.trim();
         const password = document.getElementById("myPassword").value;
 
-        const response = await fetch(`${API_URL}/auth/login`, {
+        const response = await fetch(API_ENDPOINTS.login, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
         submitButton.value = "Success! Redirecting...";
 
         setTimeout(() => {
-          window.location.href = redirectPath || "index.html";
+          window.location.href = redirectPath || PAGE_ROUTES.home;
         }, 500);
       } catch (error) {
         console.error("Login error:", error);
