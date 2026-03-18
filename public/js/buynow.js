@@ -1,8 +1,14 @@
 /*
+Author: Antonio Corona
+Last Updated: 2026-03-18
+
 buynow.js handles the shadow cart for checkout
 Displays items from either Buy Now (single item) or Place Order (all cart items)
 NOW WITH AUTHENTICATION REQUIRED
 */
+
+import { API_ENDPOINTS, PAGE_ROUTES } from "./config.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   // CHECK IF USER IS LOGGED IN - If not, redirect
   if (!Auth.isLoggedIn()) {
@@ -21,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (shadowCart.length === 0) {
     shadowCartItems.innerHTML = "<p>No items to checkout. Redirecting...</p>";
     setTimeout(() => {
-      window.location.href = "cart.html";
+      window.location.href = PAGE_ROUTES.cart;
     }, 2000);
     return;
   }
@@ -100,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const response = await fetch(
         //if port is changed, num here needs to change.
-        "https://c2s73c-3009.csb.app/api/orders/place",
+        API_ENDPOINTS.placeOrder,
         {
           method: "POST",
           headers: {
@@ -215,14 +221,14 @@ document.addEventListener("DOMContentLoaded", () => {
         document
           .getElementById("confirmOkBtn")
           .addEventListener("click", () => {
-            window.location.href = "index.html";
+            window.location.href = PAGE_ROUTES.home;
           });
 
         // Also allow clicking overlay to close (after 1 second delay)
         setTimeout(() => {
           confirmationOverlay.addEventListener("click", (e) => {
             if (e.target === confirmationOverlay) {
-              window.location.href = "index.html";
+              window.location.href = PAGE_ROUTES.home;
             }
           });
         }, 1000);

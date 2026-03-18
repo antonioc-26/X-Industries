@@ -6,7 +6,7 @@ register.js - Handles registration form submission
 Include this in account.html: <script src="register.js"></script>
 */
 
-import { API_URL } from "./config.js";
+import { API_ENDPOINTS, PAGE_ROUTES } from "./config.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const registerForm = document.getElementById("register-form");
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const phone = document.getElementById("myPhone").value.trim();
         const password = document.getElementById("myPassword").value;
 
-        const response = await fetch(`${API_URL}/auth/register`, {
+        const response = await fetch(API_ENDPOINTS.register, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
         submitButton.value = "Success! Redirecting...";
 
         setTimeout(() => {
-          window.location.href = "index.html";
+          window.location.href = PAGE_ROUTES.home;
         }, 500);
       } catch (error) {
         console.error("Registration error:", error);

@@ -6,7 +6,7 @@ auth.js - Frontend authentication utilities
 Handles token management, login state, and authentication checks
 */
 
-import { API_URL } from "./config.js";
+import { API_ENDPOINTS, PAGE_ROUTES } from "./config.js";
 
 const Auth = {
   // Get token from localStorage
@@ -43,7 +43,7 @@ const Auth = {
   logout: async () => {
     try {
       if (Auth.isLoggedIn()) {
-        await fetch(`${API_URL}/auth/logout`, {
+        await fetch(API_ENDPOINTS.logout, {
           method: "POST",
           headers: Auth.getAuthHeader(),
         });
@@ -53,7 +53,7 @@ const Auth = {
     } finally {
       Auth.removeToken();
       Auth.removeUser();
-      window.location.href = "index.html";
+      window.location.href = PAGE_ROUTES.home;
     }
   },
 
@@ -63,7 +63,7 @@ const Auth = {
   ) => {
     sessionStorage.setItem("loginMessage", message);
     sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
-    window.location.href = "login.html";
+    window.location.href = PAGE_ROUTES.login;
     console.log("DEBUG - requireLogin called");
   },
 
@@ -195,7 +195,7 @@ function updateAuthUI() {
   const signOutButton = document.getElementById("signOutButton");
 
   function redirectToPage() {
-    window.location.href = "dashboard.html";
+    window.location.href = PAGE_ROUTES.dashboard;
   }
 
   if (isLoggedIn && user) {

@@ -1,3 +1,11 @@
+/*
+Author: Antonio Corona
+Last Updated: 2026-03-18
+
+*/
+
+import { API_ENDPOINTS, PAGE_ROUTES, DATA_PATHS } from "./config.js";
+
 document.addEventListener("DOMContentLoaded", async () => {
   const ordersContainer = document.getElementById(
     "order-history-items-container"
@@ -8,12 +16,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (!token) {
     sessionStorage.setItem("redirectAfterLogin", "orders.html");
-    window.location.href = "login.html";
+    window.location.href = PAGE_ROUTES.login;
     return;
   }
 
   try {
-    const response = await fetch("/api/orders/my-orders", {
+    const response = await fetch(API_ENDPOINTS.myOrders, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -28,7 +36,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
 
-    const productsJSON = await fetch("product_real_titles.json").then((res) =>
+    const productsJSON = await fetch(DATA_PATHS.productsJson).then((res) =>
       res.json()
     );
     const productsList = productsJSON.items;
@@ -163,7 +171,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   try {
-    const response = await fetch("/api/orders/my-orders", {
+    const response = await fetch(API_ENDPOINTS.myOrders, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -178,7 +186,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
 
-    const productsJSON = await fetch("product_real_titles.json").then((res) =>
+    const productsJSON = await fetch(DATA_PATHS.productsJson).then((res) =>
       res.json()
     );
     const productsList = productsJSON.items;

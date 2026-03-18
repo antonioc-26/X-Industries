@@ -1,14 +1,18 @@
 /*
+Author: Antonio Corona
+Last Updated: 2026-03-18
+
 app.js is used for the website Homepage (index.html)
-*/
-//****************************************************************************************** */
+*/ 
+
+import { API_ENDPOINTS } from "./config.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   /*************************
    * Home Main Product Grid (Universal JavaScript file)
    ************************/
   // Loads four products from the JSON file to display them in a grid layout
-  fetch("/api/products")
+  fetch(API_ENDPOINTS.products)
     .then((response) => {
       if (!response.ok) throw new Error("Failed to load product data");
       return response.json();

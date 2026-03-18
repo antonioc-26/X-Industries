@@ -1,7 +1,15 @@
-// This file updates the current information of the user
+/*
+Author: Antonio Corona
+Last Updated: 2026-03-18
 
-// Updates login-settings user information
-// profile.js
+This file updates the current information of the user
+
+Updates login-settings user information
+profile.jsd
+*/
+
+import { API_ENDPOINTS, PAGE_ROUTES } from "./config.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const user = Auth.getUser();
   const isLoggedIn = Auth.isLoggedIn();
@@ -61,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const SAVE_CHANGES_BUTTON = document.getElementById("SAVE_CHANGES_BUTTON");
 
     // Backend route: POST /api/auth/update-profile
-    const UPDATE_PROFILE_URL = `${API_URL}/auth/update-profile`;
+    const UPDATE_PROFILE_URL = API_ENDPOINTS.updateProfile;
 
     // Determine which field we're editing: name, email, or phone
     const params = new URLSearchParams(window.location.search);
@@ -202,7 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
           alert("Profile updated successfully!");
 
           // After saving, go back to Login & Security page
-          window.location.href = "login-settings.html";
+          window.location.href = PAGE_ROUTES.loginSettings;
         } catch (error) {
           console.error("Error updating profile:", error);
           alert(error.message || "Failed to update profile. Please try again.");

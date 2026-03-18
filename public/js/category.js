@@ -1,7 +1,12 @@
 /*
+Author: Antonio Corona
+Last Updated: 2026-03-18
+
 category.js is used to power all of the different category htmls (ex: books.html) allowing for scalability
 */
-//****************************************************************************************** */
+
+import { API_ENDPOINTS, PAGE_ROUTES } from "./config.js";
+
 // Allows for the html to fully load before the java script runs
 document.addEventListener("DOMContentLoaded", () => {
   const grid = document.getElementById("category-grid");
@@ -9,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Grab the category from the HTML
   const categoryName = grid.dataset.category;
   // Fetches product data from JSON file
-  fetch("/api/products")
+  fetch(API_ENDPOINTS.products)
     .then((res) => res.json())
     .then((data) => {
       // filters for only items in the designated category
@@ -127,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
           sessionStorage.setItem("shadowCart", JSON.stringify(shadowCart));
           sessionStorage.setItem("buyNowMode", "true");
           // Redirect to buynow.html
-          window.location.href = "buynow.html";
+          window.location.href = PAGE_ROUTES.buyNow;
         });
 
         // CREATE button container
