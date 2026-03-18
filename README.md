@@ -28,6 +28,7 @@ This repository now serves as the foundation for future improvements, refactorin
 
 ## 📁 Project Structure
 
+```
 .
 ├── public/
 │ ├── *.html # Application pages
@@ -39,6 +40,7 @@ This repository now serves as the foundation for future improvements, refactorin
 ├── index.js # Main server entry
 ├── package.json
 └── README.md
+```
 
 ---
 
