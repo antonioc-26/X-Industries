@@ -30,7 +30,7 @@ const PAGE_ROUTES = {
 };
 
 const DATA_PATHS = {
-  productsJson: "product_real_titles.json",
+  productsJson: "data/product_real_titles.json",
 };
 
 const EXTERNAL_URLS = {

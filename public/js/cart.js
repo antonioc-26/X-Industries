@@ -578,7 +578,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // Helper function to update a single button
   function updateSingleButton(button, cart) {
     const productId = button.dataset.productId;
-    const productData = JSON.parse(button.dataset.productData || "{}");
+    let productData = {};
+    try {
+      productData = JSON.parse(
+        decodeURIComponent(button.dataset.productData || "{}")
+      );
+    } catch (error) {
+      console.error("Invalid productData on button:", button, button.dataset.productData);
+      return;
+    }
     const stock = parseInt(productData.stock) || 0;
     const cartItem = cart.find((item) => item.id === productId);
 
@@ -625,14 +633,19 @@ document.addEventListener("DOMContentLoaded", () => {
 // Event delegation for all "Add to Cart" button clicks
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("add-to-cart") && !e.target.disabled) {
-    const productData = JSON.parse(e.target.dataset.productData);
+    const productData = JSON.parse(
+      decodeURIComponent(e.target.dataset.productData || "{}")
+    );
     addToCart(productData);
   }
+
   if (
     e.target.classList.contains("add-to-cart-product") &&
     !e.target.disabled
   ) {
-    const productData = JSON.parse(e.target.dataset.productData);
+    const productData = JSON.parse(
+      decodeURIComponent(e.target.dataset.productData || "{}")
+    );
     addToCart(productData);
   }
 });
