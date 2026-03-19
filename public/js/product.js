@@ -1,9 +1,20 @@
 /*
+------------------------------------------------------------
 Author: Antonio Corona
-Last Updated: 2026-03-18
+Last Updated: 2026-03-19
+Project: X-Industries
+File: product.js
 
-product.js is used for individual products.
-corresponds to (product.html)
+Description:
+  Manages the product detail page, displaying full information
+  for a selected product.
+
+Responsibilities:
+  - Retrieve product ID from URL query parameters
+  - Fetch product data from backend API
+  - Render product details (title, price, description, etc.)
+  - Handle Add to Cart and Buy Now interactions
+------------------------------------------------------------
 */
 
 import { API_ENDPOINTS, PAGE_ROUTES } from "./config.js";

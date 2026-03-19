@@ -1,9 +1,20 @@
 /*
+------------------------------------------------------------
 Author: Antonio Corona
-Last Updated: 2026-03-18
+Last Updated: 2026-03-19
+Project: X-Industries
+File: config.js
 
-config.js
-Centralized frontend configuration for API routes, pages, and shared paths.
+Description:
+  Centralized configuration file for managing API endpoints,
+  page routes, and static data paths across the application.
+
+Responsibilities:
+  - Define API endpoint URLs for backend communication
+  - Define frontend route paths for navigation
+  - Provide reusable constants across all modules
+  - Ensure maintainability by avoiding hardcoded values
+------------------------------------------------------------
 */
 
 const API_BASE_URL = "/api";

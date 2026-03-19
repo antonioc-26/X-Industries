@@ -1,9 +1,19 @@
 /*
+------------------------------------------------------------
 Author: Antonio Corona
-Last Updated: 2026-03-18
+Last Updated: 2026-03-19
+Project: X-Industries
+File: register.js
 
-register.js - Handles registration form submission
-Include this in account.html: <script src="register.js"></script>
+Description:
+  Handles new user account creation.
+
+Responsibilities:
+  - Capture registration form input
+  - Send user data to backend API
+  - Handle validation and error responses
+  - Store token and log user in upon success
+------------------------------------------------------------
 */
 
 import { API_ENDPOINTS, PAGE_ROUTES } from "./config.js";

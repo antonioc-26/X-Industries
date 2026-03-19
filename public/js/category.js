@@ -1,8 +1,20 @@
 /*
+------------------------------------------------------------
 Author: Antonio Corona
-Last Updated: 2026-03-18
+Last Updated: 2026-03-19
+Project: X-Industries
+File: category.js
 
-category.js is used to power all of the different category htmls (ex: books.html) allowing for scalability
+Description:
+  Handles product rendering for category pages such as Books,
+  Movies, Electronics, etc.
+
+Responsibilities:
+  - Detect current category from page context
+  - Fetch category-specific products from backend
+  - Dynamically render product cards
+  - Link each product to its detail page
+------------------------------------------------------------
 */
 
 import { API_ENDPOINTS, PAGE_ROUTES } from "./config.js";

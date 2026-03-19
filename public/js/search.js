@@ -1,9 +1,20 @@
 /*
+------------------------------------------------------------
 Author: Antonio Corona
-Last Updated: 2026-03-18
+Last Updated: 2026-03-19
+Project: X-Industries
+File: search.js
 
-search.js 
-*/ 
+Description:
+  Handles product search functionality across the application.
+
+Responsibilities:
+  - Capture user search input
+  - Query backend search endpoint
+  - Render matching product results
+  - Provide navigation back to home or product pages
+------------------------------------------------------------
+*/
 
 import { API_ENDPOINTS, PAGE_ROUTES } from "./config.js";
 
@@ -127,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
     card.classList.add("category-card");
 
     const link = document.createElement("a");
-    link.href = `product.html?id=${product.sys.id}`;
+    link.href = `${PAGE_ROUTES.product}?id=${product.sys.id}`;
     link.classList.add("product-link");
 
     const img = document.createElement("img");

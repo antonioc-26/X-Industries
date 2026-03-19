@@ -1,11 +1,19 @@
 /*
+------------------------------------------------------------
 Author: Antonio Corona
-Last Updated: 2026-03-18
+Last Updated: 2026-03-19
+Project: X-Industries
+File: profile.js
 
-This file updates the current information of the user
+Description:
+  Handles user profile and account settings updates.
 
-Updates login-settings user information
-profile.jsd
+Responsibilities:
+  - Load current user profile data
+  - Handle form submissions for profile updates
+  - Send updated data to backend API
+  - Reflect changes in UI
+------------------------------------------------------------
 */
 
 import { API_ENDPOINTS, PAGE_ROUTES } from "./config.js";

@@ -1,9 +1,21 @@
 /*
+------------------------------------------------------------
 Author: Antonio Corona
-Last Updated: 2026-03-18
+Last Updated: 2026-03-19
+Project: X-Industries
+File: app.js
 
-app.js is used for the website Homepage (index.html)
-*/ 
+Description:
+  Handles logic for the homepage, including loading featured
+  products and managing category navigation.
+
+Responsibilities:
+  - Fetch and display featured products
+  - Generate product cards dynamically
+  - Handle category-based navigation links
+  - Connect UI components to backend product data
+------------------------------------------------------------
+*/
 
 import { API_ENDPOINTS, PAGE_ROUTES } from "./config.js";
 
@@ -74,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (categoryFile === "misc") {
           shopMore.href = PAGE_ROUTES.misc;
         } 
-        
+
         shopMore.textContent = `Shop more ${category}`; // Sets the visible part of the link dynamically to the category
         shopMore.classList.add("shop-more-link"); // Links the link to a css class to the <a> element which allows for styling.
         // Append after all product cards

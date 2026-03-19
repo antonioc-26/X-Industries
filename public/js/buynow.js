@@ -1,10 +1,19 @@
 /*
+------------------------------------------------------------
 Author: Antonio Corona
-Last Updated: 2026-03-18
+Last Updated: 2026-03-19
+Project: X-Industries
+File: buynow.js
 
-buynow.js handles the shadow cart for checkout
-Displays items from either Buy Now (single item) or Place Order (all cart items)
-NOW WITH AUTHENTICATION REQUIRED
+Description:
+  Handles the checkout and order placement process for users.
+
+Responsibilities:
+  - Load cart or shadow cart data for checkout
+  - Collect user shipping and payment information
+  - Send order data to backend API
+  - Display confirmation upon successful order placement
+------------------------------------------------------------
 */
 
 import { API_ENDPOINTS, PAGE_ROUTES } from "./config.js";
