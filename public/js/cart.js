@@ -662,5 +662,5 @@ window.placeOrder = function () {
   sessionStorage.setItem("shadowCart", JSON.stringify(currentCart));
 
   // Redirect to buynow page
-  window.location.href = "buynow.html";
+  window.location.href = "/buynow";
 };

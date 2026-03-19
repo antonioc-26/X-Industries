@@ -1,3 +1,24 @@
+<!--
+===============================================================================
+Author: Antonio Corona
+Last Updated: 2026-03-19
+Project: X-Industries
+Page: User Dashboard
+File: dashboard.html
+
+Description:
+Displays user account summary, including recent orders and account info.
+
+Dependencies:
+- ../styles/styles.css
+- ../js/orders.js
+- ../js/profile.js
+
+Notes:
+- Shows most recent order
+===============================================================================
+-->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,7 +26,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Dashboard - Amazone 2.0</title>
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="../styles/styles.css">
     <script
       src="https://kit.fontawesome.com/aa8c13a461.js"
       crossorigin="anonymous"
@@ -21,23 +42,23 @@
       <div class="header-middle">
         <div class="nav">
           <nav>
-            <a href="index.html"><button id="homeButton">Home</button></a>
-            <a href="books.html"><button id="booksButton">Books</button></a>
-            <a href="movies.html"><button id="moviesButton">Movies</button></a>
-            <a href="electronics.html"
+            <a href="/"><button id="homeButton">Home</button></a>
+            <a href="/books"><button id="booksButton">Books</button></a>
+            <a href="/movies"><button id="moviesButton">Movies</button></a>
+            <a href="/electronics"
               ><button id="electronicsButton">Electronics</button></a
             >
-            <a href="video-games.html"
+            <a href="/video-games"
               ><button id="video-gamesButton">Video Games</button></a
             >
-            <a href="toys.html"><button id="toysButton">Toys</button></a>
-            <a href="misc.html"><button id="miscButton">Misc</button></a>
+            <a href="/toys"><button id="toysButton">Toys</button></a>
+            <a href="/misc"><button id="miscButton">Misc</button></a>
           </nav>
         </div>
       </div>
 
       <div class="header-bottom">
-        <a href="login.html"><button id="accountButton">Login</button></a>
+        <a href="/login"><button id="accountButton">Login</button></a>
 
         <div id="searchWrapper">
           <input
@@ -50,9 +71,9 @@
             <i class="fa-solid fa-magnifying-glass-dollar"></i>
           </button>
         </div>
-        <a href="orders.html"><button id="ordersButton">Orders</button></a>
+        <a href="/orders"><button id="ordersButton">Orders</button></a>
 
-        <a href="cart.html" class="cart-link">
+        <a href="/cart" class="cart-link">
           <div class="cart-container">
             <div class="cart-icon2">
               <i class="fa-solid fa-cart-shopping"></i>
@@ -74,16 +95,16 @@
 
       <div id="DASHBOARD_GRID" class="dashboard-grid">
         <button id="signOutButton" class="dashboard-tile">
-          <img src="images/avatar.png" class="tile-icon" />
+          <img src="../assets/avatar.png" class="tile-icon" />
           <div class="tile-text">
             <h4>Sign Out</h4>
             <p>Sign out and return to the login screen</p>
           </div>
         </button>
 
-        <a href="login-settings.html" class="dashboard-tile-link">
+        <a href="/login-settings" class="dashboard-tile-link">
           <button class="dashboard-tile">
-            <img src="images/accounts.png" class="tile-icon" />
+            <img src="../assets/accounts.png" class="tile-icon" />
             <div class="tile-text">
               <h4>Login & Security</h4>
               <p>Edit login, name, and mobile number</p>
@@ -91,9 +112,9 @@
           </button>
         </a>
 
-        <a href="orders.html" class="dashboard-tile-link">
+        <a href="/orders" class="dashboard-tile-link">
           <button class="dashboard-tile">
-            <img src="images/orders.png" class="tile-icon" />
+            <img src="../assets/orders.png" class="tile-icon" />
             <div class="tile-text">
               <h4>Your Orders</h4>
               <p>
@@ -129,8 +150,8 @@
       </footer>
     </div>
   </body>
-  <script type="module" src="js/search.js"></script>
-  <script src="js/cart.js"></script>
-  <script type="module" src="js/auth.js"></script>
-  <script type="module" src="js/orders.js"></script>
+  <script type="module" src="../js/search.js"></script>
+  <script src="../js/cart.js"></script>
+  <script type="module" src="../js/auth.js"></script>
+  <script type="module" src="../js/orders.js"></script>
 </html>

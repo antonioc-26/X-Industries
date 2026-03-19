@@ -5,7 +5,7 @@ Last Updated: 2026-03-18
 search.js 
 */ 
 
-import { API_ENDPOINTS } from "./config.js";
+import { API_ENDPOINTS, PAGE_ROUTES } from "./config.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const searchBar = document.getElementById("searchBar");
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (results.length === 0) {
-      resultsGrid.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; padding: 40px; color: white;">No products found for "${query}". <a href="index.html" style="color: #28a99e; text-decoration: underline;">Go back to home</a></p>`;
+      resultsGrid.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; padding: 40px; color: white;">No products found for "${query}". <a href="${PAGE_ROUTES.home}" style="color: #28a99e; text-decoration: underline;">Go back to home</a></p>`;
     } else {
       // Display each result
       results.forEach((product) => {

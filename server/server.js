@@ -1,4 +1,12 @@
 /*
+------------------------------------------------------------
+Author: Antonio Corona
+Last Updated: 2026-03-19
+Project: X-Industries
+File: server.js
+
+Discription:
+
 server.js - Backend server for X-Industries Amazon 2.0
 This server connects to MongoDB and provides API endpoints for:
 - Getting products
@@ -6,14 +14,15 @@ This server connects to MongoDB and provides API endpoints for:
 - Managing cart operations
 - User authentication (register/login)
 - Order management with user association
+------------------------------------------------------------
 */
 
-//AS PART OF PROJECT SETUP - INSTALL ALL OF THESE BELOW
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const path = require("path");
 require("dotenv").config();
 
 const app = express();
@@ -21,12 +30,19 @@ const PORT = process.env.PORT || 3010;
 const JWT_SECRET =
   process.env.JWT_SECRET || "your-secret-key-change-this-in-production";
 
-//middleware
+// ======================================================
+// Middleware
+// ======================================================
 app.use(cors());
 app.use(express.json());
-const path = require("path");
+app.use(express.urlencoded({ extended: true }));
+
+// Serve all static frontend assets from /public
 app.use(express.static(path.join(__dirname, "..", "public")));
 
+// ======================================================
+// MongoDB Connection
+// ======================================================
 const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {
@@ -34,7 +50,7 @@ if (!MONGODB_URI) {
 }
 
 mongoose
-  .connect(MONGODB_URI, {})
+  .connect(MONGODB_URI)
   .then(() => {
     console.log("Connected to MongoDB successfully!");
   })
@@ -42,7 +58,11 @@ mongoose
     console.error("MongoDB connection error", error);
   });
 
-//product schema
+// ======================================================
+// Schemas
+// ======================================================
+
+// Product schema
 const productSchema = new mongoose.Schema(
   {
     sys: {
@@ -129,17 +149,24 @@ const orderSchema = new mongoose.Schema(
   }
 );
 
-//Create models
-const Product = mongoose.model("Product", productSchema, "inventory");
-const User = mongoose.model("User", userSchema, "users");
-const Order = mongoose.model("Order", orderSchema, "orders");
+// ======================================================
+// Models
+// ======================================================
+const Product =
+  mongoose.models.Product ||
+  mongoose.model("Product", productSchema, "inventory");
 
-//****************************************************** */
-//  MIDDLEWARE - Authentication
-//****************************************************** */
+const User =
+  mongoose.models.User || mongoose.model("User", userSchema, "users");
 
+const Order =
+  mongoose.models.Order || mongoose.model("Order", orderSchema, "orders");
+
+// ======================================================
+// Authentication Middleware
+// ======================================================
 const authenticateToken = (req, res, next) => {
-  const authHeader = req.headers["authorization"];
+  const authHeader = req.headers.authorization;
   const token = authHeader && authHeader.split(" ")[1];
 
   if (!token) {
@@ -154,14 +181,15 @@ const authenticateToken = (req, res, next) => {
         .status(403)
         .json({ error: "Invalid or expired token", needsLogin: true });
     }
+
     req.user = user;
     next();
   });
 };
 
-//****************************************************** */
-//  API ENDPOINTS - Authentication
-//****************************************************** */
+// ======================================================
+// API ENDPOINTS - Authentication
+// ======================================================
 
 // Register new user
 app.post("/api/auth/register", async (req, res) => {
@@ -174,7 +202,6 @@ app.post("/api/auth/register", async (req, res) => {
         .json({ error: "All required fields must be provided" });
     }
 
-    // Check if user already exists
     const existingUser = await User.findOne({
       $or: [{ email: email.toLowerCase() }, { username: username }],
     });
@@ -185,10 +212,8 @@ app.post("/api/auth/register", async (req, res) => {
         .json({ error: "Email or username already registered" });
     }
 
-    // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create new user
     const newUser = new User({
       firstName,
       lastName,
@@ -200,9 +225,7 @@ app.post("/api/auth/register", async (req, res) => {
 
     await newUser.save();
 
-    // Create JWT token
     const token = jwt.sign(
-      // Updated -AC
       {
         userId: newUser._id,
         email: newUser.email,
@@ -223,7 +246,7 @@ app.post("/api/auth/register", async (req, res) => {
         lastName: newUser.lastName,
         username: newUser.username,
         email: newUser.email,
-        phone: newUser.phone, // Added AC
+        phone: newUser.phone,
         createdAt: newUser.createdAt,
       },
     });
@@ -244,7 +267,6 @@ app.post("/api/auth/login", async (req, res) => {
         .json({ error: "Username and password are required" });
     }
 
-    // Find user by username or email
     const user = await User.findOne({
       $or: [{ username: username }, { email: username.toLowerCase() }],
     });
@@ -253,15 +275,12 @@ app.post("/api/auth/login", async (req, res) => {
       return res.status(401).json({ error: "Invalid username or password" });
     }
 
-    // Check password
     const validPassword = await bcrypt.compare(password, user.password);
     if (!validPassword) {
       return res.status(401).json({ error: "Invalid username or password" });
     }
 
-    // Create JWT token
     const token = jwt.sign(
-      // updates -AC
       {
         userId: user._id,
         email: user.email,
@@ -282,7 +301,7 @@ app.post("/api/auth/login", async (req, res) => {
         lastName: user.lastName,
         username: user.username,
         email: user.email,
-        phone: user.phone, // Added AC
+        phone: user.phone,
         createdAt: user.createdAt,
       },
     });
@@ -296,9 +315,11 @@ app.post("/api/auth/login", async (req, res) => {
 app.get("/api/auth/me", authenticateToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.userId).select("-password");
+
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
+
     res.json({ user });
   } catch (error) {
     console.error("Error fetching user:", error);
@@ -306,37 +327,35 @@ app.get("/api/auth/me", authenticateToken, async (req, res) => {
   }
 });
 
-// Updates the User's current information -AC
+// Update current user profile
 app.post("/api/auth/update-profile", authenticateToken, async (req, res) => {
   console.log("Hit /api/auth/update-profile");
+
   try {
     const { firstName, lastName, username, phone, email, password } = req.body;
 
-    // At least one field must be provided
     if (!firstName && !lastName && !username && !phone && !email && !password) {
       return res.status(400).json({ error: "No fields to update provided" });
     }
 
     const updates = {};
+
     if (firstName) updates.firstName = firstName;
     if (lastName) updates.lastName = lastName;
+    if (username) updates.username = username;
     if (phone) updates.phone = phone;
 
-    // Hash password if provided
     if (password) {
       updates.password = await bcrypt.hash(password, 10);
     }
 
     if (email) {
-      const normalizedEmail = email.toLowerCase();
-      updates.email = normalizedEmail;
+      updates.email = email.toLowerCase();
     }
 
-    const updatedUser = await User.findByIdAndUpdate(
-      req.user.userId, // comes from authenticateToken's decoded JWT
-      updates,
-      { new: true } // return the updated document
-    ).select("-password");
+    const updatedUser = await User.findByIdAndUpdate(req.user.userId, updates, {
+      new: true,
+    }).select("-password");
 
     if (!updatedUser) {
       return res.status(404).json({ error: "User not found" });
@@ -366,23 +385,15 @@ app.post("/api/auth/logout", authenticateToken, (req, res) => {
   res.json({ success: true, message: "Logged out successfully" });
 });
 
-//****************************************************** */
-//  API ENDPOINTS - Products
-//****************************************************** */
-
-app.get("/", (req, res) => {
-  res.json({
-    message: "X-Industries API server is running!",
-    status: "OK",
-  });
-});
-
+// ======================================================
+// API ENDPOINTS - Products
+// ======================================================
 app.get("/api/products", async (req, res) => {
   try {
     const products = await Product.find();
     res.json({ items: products });
   } catch (error) {
-    console.error("Error fetching products: ", error);
+    console.error("Error fetching products:", error);
     res.status(500).json({ error: "Failed to fetch products" });
   }
 });
@@ -390,12 +401,14 @@ app.get("/api/products", async (req, res) => {
 app.get("/api/products/:id", async (req, res) => {
   try {
     const product = await Product.findOne({ "sys.id": req.params.id });
+
     if (!product) {
       return res.status(404).json({ error: "Product not found." });
     }
+
     res.json(product);
   } catch (error) {
-    console.error("Error fetching single product ", error);
+    console.error("Error fetching single product", error);
     res.status(500).json({ error: "Failed to fetch single product" });
   }
 });
@@ -405,6 +418,7 @@ app.get("/api/products/category/:category", async (req, res) => {
     const products = await Product.find({
       "fields.category": req.params.category,
     });
+
     res.json({ items: products });
   } catch (error) {
     console.error("Error fetching products by category", error);
@@ -419,15 +433,17 @@ app.patch("/api/products/:id/stock", async (req, res) => {
     if (!quantity || quantity < 1) {
       return res.status(400).json({ error: "Valid quantity required" });
     }
+
     const product = await Product.findOne({ "sys.id": req.params.id });
+
     if (!product) {
       return res.status(404).json({ error: "Product not found" });
     }
 
     if (product.fields.stock < quantity) {
       return res.status(400).json({
-        error: "Insufficent stock",
-        availible: product.fields.stock,
+        error: "Insufficient stock",
+        available: product.fields.stock,
       });
     }
 
@@ -439,7 +455,7 @@ app.patch("/api/products/:id/stock", async (req, res) => {
       newStock: product.fields.stock,
     });
   } catch (error) {
-    console.error("Error updating stock: ", error);
+    console.error("Error updating stock:", error);
     res.status(500).json({ error: "Failed to update stock" });
   }
 });
@@ -451,6 +467,7 @@ app.post("/api/products/check-stock", async (req, res) => {
     if (!items || !Array.isArray(items)) {
       return res.status(400).json({ error: "Invalid request format" });
     }
+
     const stockStatus = [];
 
     for (const item of items) {
@@ -478,9 +495,10 @@ app.post("/api/products/check-stock", async (req, res) => {
         });
       }
     }
+
     res.json({ stockStatus });
   } catch (error) {
-    console.error("Error checking stock: ", error);
+    console.error("Error checking stock:", error);
     res.status(500).json({ error: "Failed to check stock" });
   }
 });
@@ -500,15 +518,14 @@ app.get("/api/products/search/:query", async (req, res) => {
 
     res.json({ items: products });
   } catch (error) {
-    console.error("Error searching products: ", error);
+    console.error("Error searching products:", error);
     res.status(500).json({ error: "Failed to search products" });
   }
 });
 
-//****************************************************** */
-//  API ENDPOINTS - Orders (PROTECTED)
-//****************************************************** */
-
+// ======================================================
+// API ENDPOINTS - Orders (Protected)
+// ======================================================
 app.post("/api/orders/place", authenticateToken, async (req, res) => {
   try {
     const { items, customerInfo } = req.body;
@@ -517,7 +534,6 @@ app.post("/api/orders/place", authenticateToken, async (req, res) => {
       return res.status(400).json({ error: "Cart is empty" });
     }
 
-    // Verify stock availability
     for (const item of items) {
       const product = await Product.findOne({ "sys.id": item.id });
 
@@ -536,14 +552,12 @@ app.post("/api/orders/place", authenticateToken, async (req, res) => {
       }
     }
 
-    // Calculate total and prepare order items
     let totalAmount = 0;
     const orderItems = [];
 
     for (const item of items) {
       const product = await Product.findOne({ "sys.id": item.id });
 
-      // Update stock
       product.fields.stock -= item.quantity;
       await product.save();
 
@@ -560,8 +574,8 @@ app.post("/api/orders/place", authenticateToken, async (req, res) => {
       });
     }
 
-    // Create order
     const orderId = "ORD-" + Date.now();
+
     const newOrder = new Order({
       orderId,
       userName: req.user.username,
@@ -641,7 +655,45 @@ app.get("/api/orders/:orderId", authenticateToken, async (req, res) => {
   }
 });
 
+// ======================================================
+// Frontend Page Routes
+// ======================================================
+
+// Homepage
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/pages/index.html"));
+});
+
+// Clean page routes like /cart, /orders, /login, etc.
+app.get("/:page", (req, res, next) => {
+  const reservedPrefixes = ["api", "js", "styles", "assets", "data"];
+
+  if (reservedPrefixes.includes(req.params.page)) {
+    return next();
+  }
+
+  res.sendFile(
+    path.join(__dirname, `../public/pages/${req.params.page}.html`),
+    (err) => {
+      if (err) {
+        next();
+      }
+    }
+  );
+});
+
+// ======================================================
+// 404 Fallback
+// ======================================================
+app.use((req, res) => {
+  res.status(404).send("Page not found");
+});
+
+// ======================================================
+// Start Server
+// ======================================================
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-  console.log(`API is available at http://localhost:${PORT}`);
+  console.log(`Frontend: http://localhost:${PORT}`);
+  console.log(`Products API: http://localhost:${PORT}/api/products`);
 });

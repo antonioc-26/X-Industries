@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const stockValue = product.fields.stock;
 
         const link = document.createElement("a");
-        link.href = `product.html?id=${product.sys.id}`;
+        link.href = `${PAGE_ROUTES.product}?id=${product.sys.id}`;
         link.classList.add("product-link");
 
         // Create wrapper div that will be greyed out

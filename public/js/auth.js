@@ -177,7 +177,11 @@ function showLoginPopup(message) {
 document.addEventListener("DOMContentLoaded", () => {
   const loginMessage = sessionStorage.getItem("loginMessage");
 
-  if (loginMessage && window.location.pathname.includes("login.html")) {
+  if (
+    loginMessage &&
+    (window.location.pathname === "/login" ||
+      window.location.pathname.endsWith("/login"))
+  ) {
     showLoginPopup(loginMessage);
     sessionStorage.removeItem("loginMessage");
   }

@@ -19,14 +19,24 @@ const API_ENDPOINTS = {
 };
 
 const PAGE_ROUTES = {
-  home: "index.html",
-  login: "login.html",
-  register: "account.html",
-  dashboard: "dashboard.html",
-  cart: "cart.html",
-  buyNow: "buynow.html",
-  loginSettings: "login-settings.html",
-  orders: "orders.html",
+  home: "/",
+  login: "/login",
+  register: "/account",
+  dashboard: "/dashboard",
+  cart: "/cart",
+  buyNow: "/buynow",
+  loginSettings: "/login-settings",
+  orders: "/orders",
+  profile: "/profile",
+  
+  books: "/books",
+  movies: "/movies",
+  electronics: "/electronics",
+  videoGames: "/video-games",
+  toys: "/toys",
+  misc: "/misc",
+
+  product: "/product",
 };
 
 const DATA_PATHS = {

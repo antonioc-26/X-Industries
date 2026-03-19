@@ -5,7 +5,7 @@ Last Updated: 2026-03-18
 app.js is used for the website Homepage (index.html)
 */ 
 
-import { API_ENDPOINTS } from "./config.js";
+import { API_ENDPOINTS, PAGE_ROUTES } from "./config.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   /*************************
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         categoryProducts.forEach((product) => {
           const title = product.fields.title;
           const image = product.fields.image.fields.file.url;
-          const link = `product.html?id=${product.sys.id}`; // Example: product.html[#]1
+          const link = `${PAGE_ROUTES.product}?id=${product.sys.id}`; // Example: product.html[#]1
           const card = document.createElement("div");
           card.classList.add("product-card");
           card.innerHTML = `
@@ -59,7 +59,22 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           categoryFile = category.toLowerCase().replace(/\s+/g, "-");
         }
-        shopMore.href = `${categoryFile}.html`; // Sets the links destination
+
+        // Sets the links destination
+        if (categoryFile === "books") {
+          shopMore.href = PAGE_ROUTES.books;
+        } else if (categoryFile === "movies") {
+          shopMore.href = PAGE_ROUTES.movies;
+        } else if (categoryFile === "electronics") {
+          shopMore.href = PAGE_ROUTES.electronics;
+        } else if (categoryFile === "video-games") {
+          shopMore.href = PAGE_ROUTES.videoGames;
+        } else if (categoryFile === "toys") {
+          shopMore.href = PAGE_ROUTES.toys;
+        } else if (categoryFile === "misc") {
+          shopMore.href = PAGE_ROUTES.misc;
+        } 
+        
         shopMore.textContent = `Shop more ${category}`; // Sets the visible part of the link dynamically to the category
         shopMore.classList.add("shop-more-link"); // Links the link to a css class to the <a> element which allows for styling.
         // Append after all product cards

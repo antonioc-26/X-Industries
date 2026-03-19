@@ -1,6 +1,16 @@
-// Author: Antonio Corona
-// Data Import Script for X-Industries
-// Imports product data from JSON file into MongoDB "inventory" collection
+/*
+------------------------------------------------------------
+Author: Antonio Corona
+Last Updated: 2026-03-19
+Project: X-Industries
+File: importData.js
+
+Discription:
+
+Data Import Script for X-Industries
+Imports product data from JSON file into MongoDB "inventory" collection
+------------------------------------------------------------
+*/
 
 require("dotenv").config();
 const mongoose = require("mongoose");

@@ -1,11 +1,31 @@
+<!--
+===============================================================================
+Author: Antonio Corona
+Last Updated: 2026-03-19
+Project: X-Industries
+Page: Electronics Category
+File: electronics.html
+
+Description:
+Displays all electronic products available in the system.
+
+Dependencies:
+- ../styles/styles.css
+- ../js/category.js
+
+Notes:
+- Products loaded dynamically from backend API
+===============================================================================
+-->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Games - Amazone 2.0</title>
-    <link rel="stylesheet" href="css/styles.css" />
+    <title>Electronics - Amazone 2.0</title>
+    <link rel="stylesheet" href="../styles/styles.css">
     <script
       src="https://kit.fontawesome.com/aa8c13a461.js"
       crossorigin="anonymous"
@@ -21,23 +41,23 @@
       <div class="header-middle">
         <div class="nav">
           <nav>
-            <a href="index.html"><button id="homeButton">Home</button></a>
-            <a href="books.html"><button id="booksButton">Books</button></a>
-            <a href="movies.html"><button id="moviesButton">Movies</button></a>
-            <a href="electronics.html"
+            <a href="/"><button id="homeButton">Home</button></a>
+            <a href="/books"><button id="booksButton">Books</button></a>
+            <a href="/movies"><button id="moviesButton">Movies</button></a>
+            <a href="/electronics"
               ><button id="electronicsButton">Electronics</button></a
             >
-            <a href="video-games.html"
+            <a href="/video-games"
               ><button id="video-gamesButton">Video Games</button></a
             >
-            <a href="toys.html"><button id="toysButton">Toys</button></a>
-            <a href="misc.html"><button id="miscButton">Misc</button></a>
+            <a href="/toys"><button id="toysButton">Toys</button></a>
+            <a href="/misc"><button id="miscButton">Misc</button></a>
           </nav>
         </div>
       </div>
 
       <div class="header-bottom">
-        <a href="login.html"><button id="accountButton">Login</button></a>
+        <a href="/login"><button id="accountButton">Login</button></a>
 
         <div id="searchWrapper">
           <input
@@ -50,9 +70,9 @@
             <i class="fa-solid fa-magnifying-glass-dollar"></i>
           </button>
         </div>
-        <a href="orders.html"><button id="ordersButton">Orders</button></a>
+        <a href="/orders"><button id="ordersButton">Orders</button></a>
 
-        <a href="cart.html" class="cart-link">
+        <a href="/cart" class="cart-link">
           <div class="cart-container">
             <div class="cart-icon2">
               <i class="fa-solid fa-cart-shopping"></i>
@@ -66,12 +86,12 @@
 
     <main>
       <div class="page-title">
-        <h2>Video Games</h2>
+        <h2>Electronics</h2>
       </div>
       <div
         id="category-grid"
         class="category-grid"
-        data-category="Video Games"
+        data-category="Electronics"
       ></div>
     </main>
 
@@ -88,9 +108,9 @@
       </footer>
     </div>
 
-    <script src="js/cart.js"></script>
-    <script type="module" src="js/category.js"></script>
-    <script type="module" src="js/search.js"></script>
-    <script type="module" src="js/auth.js"></script>
+    <script src="../js/cart.js"></script>
+    <script type="module" src="../js/category.js"></script>
+    <script type="module" src="../js/search.js"></script>
+    <script type="module" src="../js/auth.js"></script>
   </body>
 </html>
