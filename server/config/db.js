@@ -5,7 +5,13 @@ Last Updated: 2026-03-19
 Project: X-Industries
 File: db.js
 
-Discription:
+Description:
+  Handles the connection to the MongoDB database using Mongoose.
+
+Responsibilities:
+  - Establish connection to MongoDB Atlas using environment variables
+  - Provide a reusable database connection function for the server
+  - Handle connection errors and terminate the process if connection fails
 ------------------------------------------------------------
 */
 const mongoose = require("mongoose");

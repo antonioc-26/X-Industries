@@ -5,10 +5,20 @@ Last Updated: 2026-03-19
 Project: X-Industries
 File: importData.js
 
-Discription:
+Description:
+  Script used to import and seed product data into the MongoDB
+  "inventory" collection from a local JSON file.
 
-Data Import Script for X-Industries
-Imports product data from JSON file into MongoDB "inventory" collection
+Responsibilities:
+  - Load product data from public/data/product_real_titles.json
+  - Validate JSON structure before import
+  - Clear existing inventory data in MongoDB
+  - Insert updated product data into the database
+  - Provide console feedback on import status
+
+Notes:
+  - This script replaces all existing inventory data
+  - Used during development to sync MongoDB with local data
 ------------------------------------------------------------
 */
 
