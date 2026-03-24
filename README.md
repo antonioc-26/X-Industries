@@ -91,28 +91,62 @@ All orders are stored in MongoDB and fetched via authenticated API requests.
 
 ```
 x-industries/
-├── public/
-│ ├── *.html # Application pages
-│ ├── js/
-│ │ ├── config.js # Centralized configuration
-│ │ ├── app.js
-│ │ ├── cart.js
-│ │ ├── auth.js
-│ │ ├── orders.js
-│ │ └── ...other scripts
-│ ├── styles.css
-│ ├── images/
-│ └── data/ # Product JSON data
-│
-├── server/
-│ ├── server.js # Express server
-│ ├── scripts/
-│ │ └── importData.js # Seed script
-│ └── ...routes/models
-│
+├── LICENSE
+├── README.md
+├── package-lock.json
 ├── package.json
-├── .env
-└── README.md
+├── public
+│   ├── assets
+│   │   ├── accounts.png
+│   │   ├── avatar.png
+│   │   ├── cart.png
+│   │   ├── orders.png
+│   │   ├── product1.jpg    # Products 1-100
+│   ├── data
+│   │   └── product_real_titles.json
+│   ├── js
+│   │   ├── app.js
+│   │   ├── auth.js
+│   │   ├── buynow.js
+│   │   ├── cart.js
+│   │   ├── category.js
+│   │   ├── config.js
+│   │   ├── login.js
+│   │   ├── orders.js
+│   │   ├── product.js
+│   │   ├── profile.js
+│   │   ├── register.js
+│   │   └── search.js
+│   ├── pages
+│   │   ├── account.html
+│   │   ├── books.html
+│   │   ├── buynow.html
+│   │   ├── cart.html
+│   │   ├── dashboard.html
+│   │   ├── electronics.html
+│   │   ├── index.html
+│   │   ├── login-settings.html
+│   │   ├── login.html
+│   │   ├── misc.html
+│   │   ├── movies.html
+│   │   ├── orders.html
+│   │   ├── product.html
+│   │   ├── profile.html
+│   │   ├── toys.html
+│   │   └── video-games.html
+│   └── styles
+│       └── styles.css
+├── screenshots
+│   ├── dashboard.jpg
+│   ├── home.jpg
+│   ├── orders.jpg
+│   └── product.jpg
+└── server
+    ├── config
+    │   └── db.js
+    ├── scripts
+    │   └── importData.js
+    └── server.js
 ```
 
 ---
