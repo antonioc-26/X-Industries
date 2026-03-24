@@ -1,0 +1,182 @@
+<!--
+===============================================================================
+Author: Antonio Corona
+Last Updated: 2026-03-19
+Project: X-Industries
+Page: Profile Settings
+File: profile.html
+
+Description:
+Allows users to edit personal profile details such as name, username,
+email, and phone number.
+
+Dependencies:
+- ../styles/styles.css
+- ../js/profile.js
+
+Notes:
+- Field editing controlled via query parameters
+===============================================================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Profile Settings - Amazone 2.0</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <script
+      src="https://kit.fontawesome.com/aa8c13a461.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header class="website-header">
+      <div class="header-top">
+        <h1>X-Industries</h1>
+      </div>
+      <div class="header-middle">
+        <div class="nav">
+          <nav>
+            <a href="/"><button id="homeButton">Home</button></a>
+            <a href="/books"><button id="booksButton">Books</button></a>
+            <a href="/movies"><button id="moviesButton">Movies</button></a>
+            <a href="/electronics"
+              ><button id="electronicsButton">Electronics</button></a
+            >
+            <a href="/video-games"
+              ><button id="video-gamesButton">Video Games</button></a
+            >
+            <a href="/toys"><button id="toysButton">Toys</button></a>
+            <a href="/misc"><button id="miscButton">Misc</button></a>
+          </nav>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <a href="/login"><button id="accountButton">Login</button></a>
+        <div id="searchWrapper">
+          <input
+            type="text"
+            name="searchBar"
+            id="searchBar"
+            placeholder="Search X-Industries"
+          />
+          <button class="search-icon-btn" id="searchbutton" type="button">
+            <i class="fa-solid fa-magnifying-glass-dollar"></i>
+          </button>
+        </div>
+        <a href="/orders"><button id="ordersButton">Orders</button></a>
+        <a href="/cart" class="cart-link">
+          <div class="cart-container">
+            <div class="cart-icon2">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+            <span id="cart-count">0</span>
+            <div id="cart-total">$0.00</div>
+          </div>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <div class="page-title">
+        <h2>Profile Settings</h2>
+      </div>
+
+      <div id="login-settings-background-container">
+        <div id="login-settings-container">
+          <div class="login-settings-container">
+            <ol class="a-ordered-list a-horizontal a-spacing-medium">
+              <li>
+                <a href="/dashboard" class="a-link">Your Account ></a>
+                <a href="/login-settings" class="a-link"
+                  >Login & Security ></a
+                >
+                <a id="CHANGE_MINI_TITLE"> profile-page-selected placeholder</a>
+              </li>
+            </ol>
+
+            <h1 id="CHANGE_TITLE">Change your name</h1>
+
+            <div class="a-section">
+              <div class="a-box-group">
+                <div id="NAME" class="a-box a-first">
+                  <div class="a-box-inner a-padding-medium">
+                    <div class="authx-account-maintenance-card-layout">
+                      <div
+                        class="authx-account-maintenance-card-layout_2"
+                        style="flex-grow: 1"
+                      >
+                        <div class="a-section">
+                          <h1
+                            id="NEW_FIELD_SUMMARY"
+                            aria-label="New field"
+                            class="a-size-base a-spacing-medium"
+                          >
+                            If you want to change to FIELD associated with your
+                            account, you may do so below. Be sure to click the
+                            <strong>Save Changes</strong> button when you are
+                            done.
+                          </h1>
+
+                          <h1
+                            id="NEW_FIELD_TITLE"
+                            aria-label="New field"
+                            class="a-size-base a-spacing-mini a-text-bold"
+                          >
+                            New field
+                          </h1>
+                          <input
+                            id="NEW_FIELD_SUBTITLE"
+                            type="text"
+                            class="input-field"
+                            value="Profile Field Place Holder"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="authx-account-maintenance-card-layout_2">
+                        <div class="a-section">
+                          <span
+                            id="SAVE_CHANGES_BUTTON"
+                            class="a-save-button a-button-base authx-account-maintenance-card-style_action-button_2"
+                          >
+                            <span class="a-save-button-inner">
+                              <a aria-label="Save field" class="a-button-text"
+                                >Save Changes</a
+                              >
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="footer">
+      <footer>
+        <i>
+          <small>
+            Copyright &copy; X-Industries LLC Amazone 2.0 Corp.
+            <a href="mailto:X-Industries@amazone2.0.com"
+              >X-Industries@amazone2.0.com</a
+            >
+          </small>
+        </i>
+      </footer>
+    </div>
+    <script type="module" src="../js/search.js"></script>
+    <script src="../js/cart.js"></script>
+    <script type="module" src="../js/auth.js"></script>
+    <script type="module" src="../js/register.js"></script>
+    <script type="module" src="../js/profile.js"></script>
+  </body>
+</html>

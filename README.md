@@ -1,10 +1,245 @@
-# Node.js template
+# 🛒 X-Industries
 
-This is a Node.js project.
+A full-stack e-commerce web application inspired by Amazon, designed to demonstrate real-world software engineering concepts including authentication, REST APIs, database integration, and dynamic UI rendering.
 
-Add your [configuration](https://codesandbox.io/docs/projects/learn/setting-up/tasks) to optimize it for [CodeSandbox](https://codesandbox.io/p/dashboard).
+Users can browse products, search by category, manage a shopping cart, create accounts, and place orders with persistent storage using MongoDB.
 
-## Resources
+---
 
-- [CodeSandbox — Docs](https://codesandbox.io/docs/learn)
-- [CodeSandbox — Discord](https://discord.gg/Ggarp3pX5H)
+## 🚀 Live Demo
+
+*(Coming soon — deployment in progress)*
+
+---
+
+## 📸 Screenshots
+
+### Home Page
+![Home](screenshots/home.jpg)
+
+### Product Page
+![Product](screenshots/product.jpg)
+
+### Orders Page
+![Orders](screenshots/orders.jpg)
+
+### Dashboard Page
+![Dashboard](screenshots/dashboard.jpg)
+
+---
+
+## ✨ Features
+
+- 🛍️ Product browsing by category
+- 🔍 Search functionality
+- 🛒 Shopping cart system with quantity controls
+- ⚡ Buy Now checkout flow
+- 👤 User authentication (register/login/logout)
+- 📦 Order history tracking
+- 📊 User dashboard with recent orders
+- 🔁 “Buy Again” functionality from previous orders
+- 🧠 Centralized configuration system (no hardcoded URLs)
+- ☁️ MongoDB Atlas database integration
+
+---
+
+## 🧾 Order System
+
+Users can:
+
+- Place orders from the cart or buy-now flow
+- View full order history
+- View most recent order on dashboard
+- Re-add previous items using "Buy it again"
+
+All orders are stored in MongoDB and fetched via authenticated API requests.
+
+---
+
+## 🔐 Authentication
+
+- Secure user registration and login
+- JWT-based authentication
+- Token stored in localStorage
+- Protected routes (orders, dashboard, profile)
+
+---
+
+## 🛠️ Technologies Used
+
+### Frontend
+- HTML5
+- CSS3
+- Vanilla JavaScript (ES Modules)
+
+### Backend
+- Node.js
+- Express.js
+
+### Database
+- MongoDB Atlas
+- Mongoose
+
+### Other
+- REST APIs
+- LocalStorage (cart persistence)
+- SessionStorage (checkout flow)
+
+---
+
+## 📁 Project Structure
+
+```
+x-industries/
+├── LICENSE
+├── README.md
+├── package-lock.json
+├── package.json
+├── public
+│   ├── assets
+│   │   ├── accounts.png
+│   │   ├── avatar.png
+│   │   ├── cart.png
+│   │   ├── orders.png
+│   │   ├── product1.jpg    # Products 1-100
+│   ├── data
+│   │   └── product_real_titles.json
+│   ├── js
+│   │   ├── app.js
+│   │   ├── auth.js
+│   │   ├── buynow.js
+│   │   ├── cart.js
+│   │   ├── category.js
+│   │   ├── config.js
+│   │   ├── login.js
+│   │   ├── orders.js
+│   │   ├── product.js
+│   │   ├── profile.js
+│   │   ├── register.js
+│   │   └── search.js
+│   ├── pages
+│   │   ├── account.html
+│   │   ├── books.html
+│   │   ├── buynow.html
+│   │   ├── cart.html
+│   │   ├── dashboard.html
+│   │   ├── electronics.html
+│   │   ├── index.html
+│   │   ├── login-settings.html
+│   │   ├── login.html
+│   │   ├── misc.html
+│   │   ├── movies.html
+│   │   ├── orders.html
+│   │   ├── product.html
+│   │   ├── profile.html
+│   │   ├── toys.html
+│   │   └── video-games.html
+│   └── styles
+│       └── styles.css
+├── screenshots
+│   ├── dashboard.jpg
+│   ├── home.jpg
+│   ├── orders.jpg
+│   └── product.jpg
+└── server
+    ├── config
+    │   └── db.js
+    ├── scripts
+    │   └── importData.js
+    └── server.js
+```
+
+---
+
+## ⚙️ Running the Project Locally
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/x-industries.git
+cd x-industries
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Configure environment variables
+Create a .env file:
+```env
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+PORT=3010
+```
+
+4. Seed the database
+```bash
+npm run import:data
+```
+
+5. Seed the database
+```bash
+npm start
+```
+
+6. Open the app
+```
+http://localhost:3010
+```
+
+---
+
+## 💻 Development
+
+To modify or extend the project:
+
+1. Run the server locally
+2. Edit frontend JS/HTML/CSS files
+3. Update backend routes or models as needed
+4. Refresh browser to test changes
+
+---
+
+## 🧠 Key Improvements (Post-Migration)
+
+- Migrated from CodeSandbox → GitHub
+- Refactored project structure
+- Implemented MongoDB Atlas integration
+- Built full authentication system
+- Created order history + dashboard system
+- Centralized all API routes using config.js
+- Converted frontend scripts to ES modules
+- Fixed multiple data flow and state management bugs
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome.
+
+If you'd like to improve the project:
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Open a pull request
+
+---
+
+## 📌 Versioning
+
+v1.0.0 — First stable full-stack release with authentication, MongoDB integration, and order system
+
+---
+
+## 📄 License
+
+This project is open source and available under the **MIT License**.
+
+---
+
+## 👤 Author
+
+Developed by: Antonio Corona Montes De Oca  
+GitHub: https://github.com/antonioc-26

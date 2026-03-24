@@ -1,0 +1,157 @@
+<!--
+===============================================================================
+Author: Antonio Corona
+Last Updated: 2026-03-19
+Project: X-Industries
+Page: User Dashboard
+File: dashboard.html
+
+Description:
+Displays user account summary, including recent orders and account info.
+
+Dependencies:
+- ../styles/styles.css
+- ../js/orders.js
+- ../js/profile.js
+
+Notes:
+- Shows most recent order
+===============================================================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Dashboard - Amazone 2.0</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <script
+      src="https://kit.fontawesome.com/aa8c13a461.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <header class="website-header">
+      <div class="header-top">
+        <h1>X-Industries</h1>
+      </div>
+
+      <div class="header-middle">
+        <div class="nav">
+          <nav>
+            <a href="/"><button id="homeButton">Home</button></a>
+            <a href="/books"><button id="booksButton">Books</button></a>
+            <a href="/movies"><button id="moviesButton">Movies</button></a>
+            <a href="/electronics"
+              ><button id="electronicsButton">Electronics</button></a
+            >
+            <a href="/video-games"
+              ><button id="video-gamesButton">Video Games</button></a
+            >
+            <a href="/toys"><button id="toysButton">Toys</button></a>
+            <a href="/misc"><button id="miscButton">Misc</button></a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="header-bottom">
+        <a href="/login"><button id="accountButton">Login</button></a>
+
+        <div id="searchWrapper">
+          <input
+            type="text"
+            name="searchBar"
+            id="searchBar"
+            placeholder="Search X-Industries"
+          />
+          <button class="search-icon-btn" id="searchbutton" type="button">
+            <i class="fa-solid fa-magnifying-glass-dollar"></i>
+          </button>
+        </div>
+        <a href="/orders"><button id="ordersButton">Orders</button></a>
+
+        <a href="/cart" class="cart-link">
+          <div class="cart-container">
+            <div class="cart-icon2">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+            <span id="cart-count">0</span>
+            <div id="cart-total">$0.00</div>
+          </div>
+        </a>
+      </div>
+    </header>
+
+    <main class="dashbody">
+      <div class="page-title">
+        <h2>Account Dashboard</h2>
+      </div>
+      <div class="user-welcome">
+        <p id="USER_WELCOME_MESSAGE">Welcome "user.."!</p>
+      </div>
+
+      <div id="DASHBOARD_GRID" class="dashboard-grid">
+        <button id="signOutButton" class="dashboard-tile">
+          <img src="../assets/avatar.png" class="tile-icon" />
+          <div class="tile-text">
+            <h4>Sign Out</h4>
+            <p>Sign out and return to the login screen</p>
+          </div>
+        </button>
+
+        <a href="/login-settings" class="dashboard-tile-link">
+          <button class="dashboard-tile">
+            <img src="../assets/accounts.png" class="tile-icon" />
+            <div class="tile-text">
+              <h4>Login & Security</h4>
+              <p>Edit login, name, and mobile number</p>
+            </div>
+          </button>
+        </a>
+
+        <a href="/orders" class="dashboard-tile-link">
+          <button class="dashboard-tile">
+            <img src="../assets/orders.png" class="tile-icon" />
+            <div class="tile-text">
+              <h4>Your Orders</h4>
+              <p>
+                Track, return, cancel an order, download invoice or buy again
+              </p>
+            </div>
+          </button>
+        </a>
+      </div>
+
+      <!-- NEW: Most recent order section -->
+      <div class="orders-title">
+        <h3>Your Most Recent Order</h3>
+      </div>
+
+      <!-- most recent order dynamically rendered here -->
+      <div
+        id="most-recent-order-history-items-container"
+        class="most-recent-order-history-items-container"
+      ></div>
+    </main>
+
+    <div class="footer">
+      <footer>
+        <i>
+          <small>
+            Copyright &copy; X-Industries LLC Amazone 2.0 Corp.
+            <a href="mailto:X-Industries@amazone2.0.com"
+              >X-Industries@amazone2.0.com</a
+            >
+          </small>
+        </i>
+      </footer>
+    </div>
+  </body>
+  <script type="module" src="../js/search.js"></script>
+  <script src="../js/cart.js"></script>
+  <script type="module" src="../js/auth.js"></script>
+  <script type="module" src="../js/orders.js"></script>
+</html>
