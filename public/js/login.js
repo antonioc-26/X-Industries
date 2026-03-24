@@ -1,8 +1,19 @@
 /*
+------------------------------------------------------------
 Author: Antonio Corona
-Last Updated: 2026-03-18
+Last Updated: 2026-03-19
+Project: X-Industries
+File: login.js
 
-login.js - Handles login form submission
+Description:
+  Handles user login functionality.
+
+Responsibilities:
+  - Capture login form input
+  - Send credentials to backend API
+  - Store authentication token on success
+  - Redirect user to dashboard or intended page
+------------------------------------------------------------
 */
 
 import { API_ENDPOINTS, PAGE_ROUTES } from "./config.js";

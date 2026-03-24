@@ -1,5 +1,13 @@
 /*
+------------------------------------------------------------
+Author: Antonio Corona
+Last Updated: 2026-03-19
+Project: X-Industries
+File: styles.css
+
+Discription:
 Reorganized CSS file - All styles grouped by category/component
+------------------------------------------------------------
 */
 
 /*********************
@@ -1419,15 +1427,15 @@ form.account-form {
     padding: 10px 8px;
   }
 
-  .header-bottom > a[href="account.html"] {
+  .header-bottom > a[href="/account"] {
     order: 1;
   }
 
-  .header-bottom > a[href="orders.html"] {
+  .header-bottom > a[href="/orders"] {
     order: 2;
   }
 
-  .header-bottom > a[href="cart.html"] {
+  .header-bottom > a[href="/cart"] {
     order: 3;
   }
 

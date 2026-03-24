@@ -1,11 +1,20 @@
 <!--
 ===============================================================================
 Author: Antonio Corona
-Date: 2026-03-18
+Last Updated: 2026-03-19
 Project: X-Industries
-File: 
+Page: Register Account
+File: account.html
 
 Description:
+Allows new users to create an account.
+
+Dependencies:
+- ../styles/styles.css
+- ../js/register.js
+
+Notes:
+- Sends user data to backend for account creation
 ===============================================================================
 -->
 <!DOCTYPE html>
@@ -15,7 +24,7 @@ Description:
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Create Account - Amazone 2.0</title>
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="../styles/styles.css">
     <script
       src="https://kit.fontawesome.com/aa8c13a461.js"
       crossorigin="anonymous"
@@ -29,22 +38,22 @@ Description:
       <div class="header-middle">
         <div class="nav">
           <nav>
-            <a href="index.html"><button id="homeButton">Home</button></a>
-            <a href="books.html"><button id="booksButton">Books</button></a>
-            <a href="movies.html"><button id="moviesButton">Movies</button></a>
-            <a href="electronics.html"
+            <a href="/"><button id="homeButton">Home</button></a>
+            <a href="/books"><button id="booksButton">Books</button></a>
+            <a href="/movies"><button id="moviesButton">Movies</button></a>
+            <a href="/electronics"
               ><button id="electronicsButton">Electronics</button></a
             >
-            <a href="video-games.html"
+            <a href="/video-games"
               ><button id="video-gamesButton">Video Games</button></a
             >
-            <a href="toys.html"><button id="toysButton">Toys</button></a>
-            <a href="misc.html"><button id="miscButton">Misc</button></a>
+            <a href="/toys"><button id="toysButton">Toys</button></a>
+            <a href="/misc"><button id="miscButton">Misc</button></a>
           </nav>
         </div>
       </div>
       <div class="header-bottom">
-        <a href="login.html"><button id="accountButton">Login</button></a>
+        <a href="/login"><button id="accountButton">Login</button></a>
         <div id="searchWrapper">
           <input
             type="text"
@@ -56,8 +65,8 @@ Description:
             <i class="fa-solid fa-magnifying-glass-dollar"></i>
           </button>
         </div>
-        <a href="orders.html"><button id="ordersButton">Orders</button></a>
-        <a href="cart.html" class="cart-link">
+        <a href="/orders"><button id="ordersButton">Orders</button></a>
+        <a href="/cart" class="cart-link">
           <div class="cart-container">
             <div class="cart-icon2">
               <i class="fa-solid fa-cart-shopping"></i>
@@ -104,7 +113,7 @@ Description:
       </form>
       <div class="auth-link-container">
         <p>Already have an account?</p>
-        <a href="login.html">
+        <a href="/login">
           <button class="auth-link-button">Login Here</button>
         </a>
       </div>
@@ -121,9 +130,9 @@ Description:
         </i>
       </footer>
     </div>
-    <script src="js/cart.js"></script>
-    <script type="module" src="js/search.js"></script>
-    <script type="module" src="js/auth.js"></script>
-    <script type="module" src="js/register.js"></script>
+    <script src="../js/cart.js"></script>
+    <script type="module" src="../js/search.js"></script>
+    <script type="module" src="../js/auth.js"></script>
+    <script type="module" src="../js/register.js"></script>
   </body>
 </html>

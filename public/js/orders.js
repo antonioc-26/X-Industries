@@ -1,10 +1,19 @@
 /*
+------------------------------------------------------------
 Author: Antonio Corona
-Last Updated: 2026-03-18
-orders.js
-Handles:
-- Full order history on orders.html
-- Most recent order on dashboard.html
+Last Updated: 2026-03-19
+Project: X-Industries
+File: orders.js
+
+Description:
+  Manages order history display and recent order retrieval.
+
+Responsibilities:
+  - Fetch authenticated user order history
+  - Render order cards dynamically
+  - Display most recent order on dashboard
+  - Integrate product data for item details
+------------------------------------------------------------
 */
 
 import { API_ENDPOINTS, PAGE_ROUTES, DATA_PATHS } from "./config.js";

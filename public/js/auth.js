@@ -1,9 +1,19 @@
 /*
+------------------------------------------------------------
 Author: Antonio Corona
-Last Updated: 2026-03-18
+Last Updated: 2026-03-19
+Project: X-Industries
+File: auth.js
 
-auth.js - Frontend authentication utilities
-Handles token management, login state, and authentication checks
+Description:
+  Provides authentication utilities for managing user sessions.
+
+Responsibilities:
+  - Store and retrieve JWT tokens
+  - Check login state
+  - Handle redirects for protected pages
+  - Provide helper functions for authentication checks
+------------------------------------------------------------
 */
 
 import { API_ENDPOINTS, PAGE_ROUTES } from "./config.js";
@@ -177,7 +187,11 @@ function showLoginPopup(message) {
 document.addEventListener("DOMContentLoaded", () => {
   const loginMessage = sessionStorage.getItem("loginMessage");
 
-  if (loginMessage && window.location.pathname.includes("login.html")) {
+  if (
+    loginMessage &&
+    (window.location.pathname === "/login" ||
+      window.location.pathname.endsWith("/login"))
+  ) {
     showLoginPopup(loginMessage);
     sessionStorage.removeItem("loginMessage");
   }

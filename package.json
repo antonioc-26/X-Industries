@@ -4,7 +4,7 @@
   "description": "X-Industries Full Stack E-Commerce Application",
   "main": "server/server.js",
   "scripts": {
-    "start": "node --watch server/server.js",
+    "start": "node server/server.js",
     "dev": "nodemon server/server.js",
     "import:data": "node server/scripts/importData.js"
   },

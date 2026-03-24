@@ -1,7 +1,22 @@
 /*
-cart.js is used for the website Cart (cart.html)
-also used to manage the cart as a whole.
+------------------------------------------------------------
+Author: Antonio Corona
+Last Updated: 2026-03-19
+Project: X-Industries
+File: cart.js
+
+Description:
+  Manages the shopping cart functionality and UI interactions.
+
+Responsibilities:
+  - Store and retrieve cart data using localStorage
+  - Add/remove items from cart
+  - Update item quantities with stock validation
+  - Calculate totals and update cart display
+  - Handle checkout redirection (Buy Now flow)
+------------------------------------------------------------
 */
+
 //****************************************************************************************** */
 document.addEventListener("DOMContentLoaded", () => {
   const currentCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -662,5 +677,5 @@ window.placeOrder = function () {
   sessionStorage.setItem("shadowCart", JSON.stringify(currentCart));
 
   // Redirect to buynow page
-  window.location.href = "buynow.html";
+  window.location.href = "/buynow";
 };

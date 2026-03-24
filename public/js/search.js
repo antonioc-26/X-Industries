@@ -1,11 +1,22 @@
 /*
+------------------------------------------------------------
 Author: Antonio Corona
-Last Updated: 2026-03-18
+Last Updated: 2026-03-19
+Project: X-Industries
+File: search.js
 
-search.js 
-*/ 
+Description:
+  Handles product search functionality across the application.
 
-import { API_ENDPOINTS } from "./config.js";
+Responsibilities:
+  - Capture user search input
+  - Query backend search endpoint
+  - Render matching product results
+  - Provide navigation back to home or product pages
+------------------------------------------------------------
+*/
+
+import { API_ENDPOINTS, PAGE_ROUTES } from "./config.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const searchBar = document.getElementById("searchBar");
@@ -78,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (results.length === 0) {
-      resultsGrid.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; padding: 40px; color: white;">No products found for "${query}". <a href="index.html" style="color: #28a99e; text-decoration: underline;">Go back to home</a></p>`;
+      resultsGrid.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; padding: 40px; color: white;">No products found for "${query}". <a href="${PAGE_ROUTES.home}" style="color: #28a99e; text-decoration: underline;">Go back to home</a></p>`;
     } else {
       // Display each result
       results.forEach((product) => {
@@ -127,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
     card.classList.add("category-card");
 
     const link = document.createElement("a");
-    link.href = `product.html?id=${product.sys.id}`;
+    link.href = `${PAGE_ROUTES.product}?id=${product.sys.id}`;
     link.classList.add("product-link");
 
     const img = document.createElement("img");

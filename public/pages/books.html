@@ -1,26 +1,38 @@
 <!--
 ===============================================================================
 Author: Antonio Corona
-Date: 2026-03-18
+Last Updated: 2026-03-19
 Project: X-Industries
-File: 
+Page: Books Category
+File: books.html
 
 Description:
+Displays all products within the Books category, allowing users to browse
+and add items to their cart.
+
+Dependencies:
+- ../styles/styles.css     -> Global styling
+- ../js/category.js        -> Handles category product loading and rendering
+
+Notes:
+- Category determined dynamically based on page context
 ===============================================================================
 -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Login - Amazone 2.0</title>
-    <link rel="stylesheet" href="css/styles.css" />
+    <title>Books - Amazone 2.0</title>
+    <link rel="stylesheet" href="../styles/styles.css">
     <script
       src="https://kit.fontawesome.com/aa8c13a461.js"
       crossorigin="anonymous"
     ></script>
-  </head>
+
+
   <body>
     <header class="website-header">
       <div class="header-top">
@@ -30,23 +42,23 @@ Description:
       <div class="header-middle">
         <div class="nav">
           <nav>
-            <a href="index.html"><button id="homeButton">Home</button></a>
-            <a href="books.html"><button id="booksButton">Books</button></a>
-            <a href="movies.html"><button id="moviesButton">Movies</button></a>
-            <a href="electronics.html"
+            <a href="/"><button id="homeButton">Home</button></a>
+            <a href="/books"><button id="booksButton">Books</button></a>
+            <a href="/movies"><button id="moviesButton">Movies</button></a>
+            <a href="/electronics"
               ><button id="electronicsButton">Electronics</button></a
             >
-            <a href="video-games.html"
+            <a href="/video-games"
               ><button id="video-gamesButton">Video Games</button></a
             >
-            <a href="toys.html"><button id="toysButton">Toys</button></a>
-            <a href="misc.html"><button id="miscButton">Misc</button></a>
+            <a href="/toys"><button id="toysButton">Toys</button></a>
+            <a href="/misc"><button id="miscButton">Misc</button></a>
           </nav>
         </div>
       </div>
 
       <div class="header-bottom">
-        <a href="login.html"><button id="accountButton">Login</button></a>
+        <a href="/login"><button id="accountButton">Login</button></a>
 
         <div id="searchWrapper">
           <input
@@ -59,15 +71,16 @@ Description:
             <i class="fa-solid fa-magnifying-glass-dollar"></i>
           </button>
         </div>
-        <a href="orders.html"><button id="ordersButton">Orders</button></a>
+        <a href="/orders"><button id="ordersButton">Orders</button></a>
 
-        <a href="cart.html" class="cart-link">
+        <a href="/cart" class="cart-link">
           <div class="cart-container">
             <div class="cart-icon2">
-              <i class="fa-solid fa-cart-shopping"></i>
+                        <i class="fa-solid fa-cart-shopping"></i>
             </div>
             <span id="cart-count">0</span>
             <div id="cart-total">$0.00</div>
+
           </div>
         </a>
       </div>
@@ -75,35 +88,10 @@ Description:
 
     <main>
       <div class="page-title">
-        <h2>Login</h2>
+        <h2>Books</h2>
       </div>
 
-      <form method="post" class="account-form" id="login-form">
-        <label for="myUsername">* Username or Email: </label>
-        <input
-          type="text"
-          id="myUsername"
-          name="myUsername"
-          required="required"
-        />
-
-        <label for="myPassword">* Password: </label>
-        <input
-          type="password"
-          id="myPassword"
-          name="myPassword"
-          required="required"
-        />
-
-        <input type="submit" value="Login" />
-      </form>
-
-      <div class="auth-link-container">
-        <p>Don't have an account?</p>
-        <a href="account.html">
-          <button class="auth-link-button">Create an Account</button>
-        </a>
-      </div>
+      <div id="category-grid" class="category-grid" data-category="Books"></div>
     </main>
 
     <div class="footer">
@@ -118,9 +106,10 @@ Description:
         </i>
       </footer>
     </div>
-    <script src="js/cart.js"></script>
-    <script type="module" src="js/search.js"></script>
-    <script type="module" src="js/auth.js"></script>
-    <script type="module" src="js/login.js"></script>
+
+    <script type="module" src="../js/category.js"></script>
+    <script src="../js/cart.js"></script>
+    <script type="module" src="../js/search.js"></script>
+    <script type="module" src="../js/auth.js"></script>
   </body>
 </html>
