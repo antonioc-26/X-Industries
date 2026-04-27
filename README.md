@@ -1,6 +1,7 @@
 # 🛒 X-Industries
+This project was built to simulate a real-world e-commerce platform and demonstrate full-stack development skills in a production-style environment.
 
-A full-stack e-commerce web application inspired by Amazon, designed to demonstrate real-world software engineering concepts including authentication, REST APIs, database integration, and dynamic UI rendering.
+A full-stack e-commerce application built with Node.js, Express, and MongoDB, demonstrating real-world concepts such as authentication, REST APIs, database integration, and dynamic UI rendering.
 
 Users can browse products, search by category, manage a shopping cart, create accounts, and place orders with persistent storage using MongoDB.
 
@@ -13,6 +14,7 @@ Try the live application here:
 https://x-industries.onrender.com
 
 > Note: This project is hosted on Render’s free tier, so the first load may take a few seconds while the server wakes up.
+
 ---
 
 ## 📸 Screenshots
@@ -46,6 +48,18 @@ https://x-industries.onrender.com
 
 ---
 
+## 🚀 Key Technical Highlights
+
+- Designed and implemented a full-stack architecture using Express to serve both frontend and API routes
+- Built a RESTful API supporting authentication, products, and order management
+- Integrated MongoDB Atlas with Mongoose for persistent, structured data storage
+- Implemented JWT-based authentication with protected routes
+- Developed a dynamic frontend using vanilla JavaScript and ES modules
+- Created a centralized configuration system to eliminate hardcoded API and route values
+- Managed client-side state using localStorage and sessionStorage
+
+---
+
 ## 🧾 Order System
 
 Users can:
@@ -68,7 +82,7 @@ All orders are stored in MongoDB and fetched via authenticated API requests.
 
 ---
 
-## Deployment
+## 🚀 Deployment
 
 The application is deployed as a full-stack Node/Express web service on Render.
 
@@ -198,7 +212,7 @@ PORT=3010
 npm run import:data
 ```
 
-5. Start the database
+5. Start the server
 ```bash
 npm start
 ```
