@@ -8,8 +8,11 @@ Users can browse products, search by category, manage a shopping cart, create ac
 
 ## 🚀 Live Demo
 
-*(Coming soon — deployment in progress)*
+Try the live application here:
 
+https://x-industries.onrender.com
+
+> Note: This project is hosted on Render’s free tier, so the first load may take a few seconds while the server wakes up.
 ---
 
 ## 📸 Screenshots
@@ -62,6 +65,23 @@ All orders are stored in MongoDB and fetched via authenticated API requests.
 - JWT-based authentication
 - Token stored in localStorage
 - Protected routes (orders, dashboard, profile)
+
+---
+
+## Deployment
+
+The application is deployed as a full-stack Node/Express web service on Render.
+
+- Frontend is served from the Express server
+- Backend API routes are hosted on the same Render service
+- MongoDB Atlas is used for persistent product, user, and order data
+- Environment variables are managed through Render
+
+---
+
+## Project Status
+
+This project is deployed as a live portfolio application and is actively maintained. Future improvements may include additional UI polish, admin tools, advanced filtering, and further backend modularization.
 
 ---
 
@@ -156,7 +176,7 @@ x-industries/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/x-industries.git
+git clone https://github.com/antonioc-26/X-Industries.git
 cd x-industries
 ```
 
@@ -178,7 +198,7 @@ PORT=3010
 npm run import:data
 ```
 
-5. Seed the database
+5. Start the database
 ```bash
 npm start
 ```
@@ -229,7 +249,7 @@ If you'd like to improve the project:
 
 ## 📌 Versioning
 
-v1.0.0 — First stable full-stack release with authentication, MongoDB integration, and order system
+v1.0.0 — First live deployed full-stack release with authentication, MongoDB Atlas integration, product catalog, cart management, checkout flow, and order history.
 
 ---
 
